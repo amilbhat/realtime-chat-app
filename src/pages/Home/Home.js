@@ -6,8 +6,8 @@ import Chat from './../../components/Chat/Chat'
 
 const Home = () => {
     return (
-        <div className="home">
-            <div className="Container">
+        <div className={classes.home}>
+            <div className={classes.container}>
                 <Sidebar />
                 <Chat />
             </div>

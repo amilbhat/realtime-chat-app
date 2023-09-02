@@ -5,6 +5,8 @@ import classes from './Chat.module.css'
 import CamImg from './../../assets/images/cam.png'
 import AddImg from './../../assets/images/add.png'
 import MoreImg from './../../assets/images/more.png'
+import Messages from "./Messages";
+import Input from './Input'
 
 const Chat = () => {
     return (
@@ -17,6 +19,8 @@ const Chat = () => {
                     <img src={MoreImg} alt="" />
                 </div>
             </div>
+            <Messages />
+            <Input /> 
         </div>
     )
 }

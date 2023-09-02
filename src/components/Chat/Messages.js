@@ -1,10 +1,18 @@
 import React from 'react'
 
 import classes from  './Messages.module.css'
+import Message  from './Message'
 
 const Messages = () => {
   return (
-    <div>Messages</div>
+    <div className={classes.messages}>
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+    </div>
   )
 }
 

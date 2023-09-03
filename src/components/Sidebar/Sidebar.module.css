@@ -3,3 +3,18 @@
     /* border-right: 1px solid #3e3c61; */
     background-color: #3e3c61;
 }
+
+
+@media screen and (max-width: 480px) {
+    
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    
+}

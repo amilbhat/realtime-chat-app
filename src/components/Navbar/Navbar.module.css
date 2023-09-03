@@ -35,3 +35,22 @@
     padding: 0.4em 0.8em;
     cursor: pointer;
 }
+
+@media screen and (max-width: 480px) {
+    
+}
+
+@media screen and (max-width: 768px) {
+    .logo {
+        display: none;
+    }
+
+    .user button {
+        position: absolute;
+        bottom: 0.6em;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    
+}

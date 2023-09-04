@@ -7,9 +7,11 @@ import { doc, setDoc } from "firebase/firestore";
 
 import classes from './Register.module.css'
 import addAvatarImg from "./../../assets/images/addAvatar.png"
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
     const [error, setError] = useState(false)
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
 
@@ -26,24 +28,29 @@ const Register = () => {
 
             const uploadTask = uploadBytesResumable(storageRef, file);
 
-            uploadTask.on('state_changed', 
+            uploadTask.on( 
                 (error) => {
                     setError(true)
-                    console.log(error)
                 }, 
                 () => {
+                    // getDownloadURL method runs before actually uploading file
+                    // Firebase Storage: Object {displayName} does not exist.
                     getDownloadURL(uploadTask.snapshot.ref).then( async(downloadURL) => {
                         await updateProfile(response.user,{
                             displayName: displayName,
                             photoURL: downloadURL,
                         })
-                        // Error with FireStorage
                         await setDoc(doc(db, 'users', response.user.uid), {
                             uid: response.user.uid,
                             displayName: displayName,
                             email: email,
                             photoURL: downloadURL
                         })
+
+                        await setDoc(doc(db, 'userChats', response.user.uid), {
+                            
+                        })
+                        navigate("/")
                     });
                 }
             );
@@ -52,8 +59,6 @@ const Register = () => {
             setError(true)
             console.log(err)
         }
-
-
     }
 
     return (

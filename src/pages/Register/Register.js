@@ -7,7 +7,7 @@ import { doc, setDoc } from "firebase/firestore";
 
 import classes from './Register.module.css'
 import addAvatarImg from "./../../assets/images/addAvatar.png"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
     const [error, setError] = useState(false)
@@ -78,7 +78,7 @@ const Register = () => {
                     <button>Sign Up</button>
                     {error && <span>Something Went Wrong</span>}
                 </form>
-                <p>already have an account? Login</p>
+                <p>already have an account? <Link to="/login">Login</Link></p>
             </div>
         </div>
     )

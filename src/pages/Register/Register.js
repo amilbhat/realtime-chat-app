@@ -11,10 +11,11 @@ import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
     const [error, setError] = useState(false)
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
-
+        setLoading(true)
         e.preventDefault()
         const displayName = e.target[0].value;
         const email = e.target[1].value;
@@ -24,40 +25,36 @@ const Register = () => {
         try{
             const response = await createUserWithEmailAndPassword(auth, email, password);
 
-            const storageRef = ref(storage, displayName);
-
-            const uploadTask = uploadBytesResumable(storageRef, file);
-
-            uploadTask.on( 
-                (error) => {
-                    setError(true)
-                }, 
-                () => {
-                    // getDownloadURL method runs before actually uploading file
-                    // Firebase Storage: Object {displayName} does not exist.
-                    getDownloadURL(uploadTask.snapshot.ref).then( async(downloadURL) => {
-                        await updateProfile(response.user,{
-                            displayName: displayName,
-                            photoURL: downloadURL,
-                        })
-                        await setDoc(doc(db, 'users', response.user.uid), {
-                            uid: response.user.uid,
-                            displayName: displayName,
-                            email: email,
-                            photoURL: downloadURL
-                        })
-
-                        await setDoc(doc(db, 'userChats', response.user.uid), {
-                            
-                        })
-                        navigate("/")
+            const date = new Date().getTime();
+            const storageRef = ref(storage, `${displayName + date}`);
+            await uploadBytesResumable(storageRef, file).then( () => {
+                    getDownloadURL(storageRef).then(async(downloadURL) => {
+                        try {
+                            await updateProfile(response.user,{
+                                displayName: displayName,
+                                photoURL: downloadURL,
+                            })
+                            await setDoc(doc(db, 'users', response.user.uid), {
+                                uid: response.user.uid,
+                                displayName: displayName,
+                                email: email,
+                                photoURL: downloadURL
+                            })
+                            await setDoc(doc(db, 'userChats', response.user.uid), {})
+                            navigate("/")
+                        }
+                        catch(err) {
+                            console.log(`Error From Register.js => ${err}`)
+                            setError(true)
+                            setLoading(false)
+                        }
                     });
                 }
             );
         }
         catch(err) {
             setError(true)
-            console.log(err)
+            setLoading(false)
         }
     }
 

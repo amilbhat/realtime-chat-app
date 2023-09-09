@@ -20,6 +20,8 @@ This project is a real-time chat application that allows users to create account
 - **React Router**: For handling routing and navigation within the application.
 - **Firebase**: Utilized for user authentication, real-time database functionality, and cloud storage for media files.
 
+Each component in the application has a separate CSS file for easy style customization.
+
 ## Features
 
 - User authentication with Firebase Authentication.

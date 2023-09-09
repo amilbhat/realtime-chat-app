@@ -52,7 +52,7 @@ const Search = () => {
                         displayName: currentUser.displayName,
                         photoURL: currentUser.photoURL
                     },
-                    [combinedId+"date"]: serverTimestamp()
+                    [combinedId+".date"]: serverTimestamp()
                 })
             }
         }

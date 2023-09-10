@@ -23,6 +23,7 @@ const Search = () => {
             });
         }catch(err) {
             setError(true)
+            console.log(err)
         }
     }
 
@@ -31,10 +32,9 @@ const Search = () => {
     }
     const handleSelect = async () => {
         // check chat collection is there or create chat
-        const combinedId = currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid
+        const combinedId = currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid;
         try {
             const response = await getDoc(doc(db, "chats", combinedId))
-
             if (!response.exists()) {
                 await setDoc(doc(db, "chats", combinedId), {messages: []});
                 await updateDoc(doc(db, "userChats", currentUser.uid), {
@@ -56,7 +56,9 @@ const Search = () => {
                 })
             }
         }
-        catch (err) {}
+        catch (err) {
+            console.log(err)
+        }
         setUser(null)
         setUsername("")
     }
@@ -73,8 +75,8 @@ const Search = () => {
                     value={username} />
             </div>
             {error && <span>User not Found!</span>}
-            {user && (<div className={classes.userChat} onClick= {() => handleSelect}>
-                <img src={user.photoURL} alt="chat image" />
+            {user && (<div className={classes.userChat} onClick = {handleSelect}>
+                <img src={user.photoURL} alt="searched User" />
                 <div className={classes.userChatInfo}>
                     <span>{user.displayName}</span>
                 </div>

@@ -22,6 +22,8 @@ This project is a real-time chat application that allows users to create account
 
 Each component in the application has a separate CSS file for easy style customization.
 
+⚠️ **Please Note**: This application is currently not optimized for smaller screens like phones. While it can be accessed on mobile devices, it may not provide the best user experience. We recommend using a larger screen, such as a tablet or desktop, for the best experience.
+
 ## Features
 
 - User authentication with Firebase Authentication.

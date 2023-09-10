@@ -1,7 +1,19 @@
 .messages {
-    background-color: #ddddf7;
+    background-color: #d7d8e6;
     padding: 0.6em;
     height: calc(100% - 8em);
-    overflow-x: scroll;
+    overflow-x: hidden;
 }
 
+.messages::-webkit-scrollbar {
+    width: 1em;
+}
+
+.messages::-webkit-scrollbar-track {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.messages::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}

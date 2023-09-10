@@ -16,6 +16,7 @@
 
 .searchForm input::placeholder {
     color: lightgray;
+    font-size: 1rem;
 }
  
 .userChat {

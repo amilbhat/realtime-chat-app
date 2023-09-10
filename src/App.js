@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
@@ -12,9 +12,13 @@ function App() {
     if (!currentUser) {
       return <Navigate to="/login" />
     }
-
     return children
   }
+  
+  useEffect(()=>{
+    document.title = "Real Time Chat Application"
+  }, [])
+
 
 
   return (

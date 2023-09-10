@@ -1,13 +1,13 @@
 .logo {
     color: #ddddf7;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .navbar {
     display: flex;
     align-items: center;
-    background-color: #2f2d52;
+    background-color: #071E3D;
     height: 4em;
     padding: 1em;
     justify-content: space-between;
@@ -19,10 +19,15 @@
    gap: 0.6em; 
 }
 
+.user span {
+    font-size: 1rem;
+    align-self: center;
+}
+
 .user img {
     background-color: #ddddf7;
-    height: 1.5em;
-    width: 1.5em;
+    height: 1.8em;
+    width: 1.8em;
     border-radius: 50%;
     object-fit: cover;
 }

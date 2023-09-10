@@ -26,11 +26,16 @@
     font-weight: 300;
 }
 
+.messageInfo span {
+    font-size: 0.6rem;
+}
+
 .messageInfo img {
     width: 2.2em;
     height: 2.2em;
     border-radius: 50%;
     object-fit: cover;
+    border: 1px solid gray;
 }
 
 .messageContent {
@@ -45,9 +50,9 @@
     padding: 0.5em 1.2em;
     border-radius: 0 0.6em 0.6em 0.6em;
     max-width: max-content;
+    font-size: 1rem;
 }
 
 .messageContent img {
     width: 50%;
-
 }

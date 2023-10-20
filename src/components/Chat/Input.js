@@ -73,6 +73,15 @@ const Input = () => {
         setImg(null)
     }
 
+    const handleSubmit = () => {
+        if (text || img) {
+            handleSend()
+        }
+        else {
+            console.log("Message is empty")
+        }
+    }
+
     return (
         <div className={classes.input}>
             <input type="text"  placeholder="Type Here ..." onChange={e => setText(e.target.value)} value={text} />
@@ -82,7 +91,7 @@ const Input = () => {
                 <label htmlFor="file">
                     <img src={Img} alt="" />
                 </label>
-                <button onClick={handleSend}>Send</button>
+                <button onClick={handleSubmit}>Send</button>
             </div>
         </div>
     )

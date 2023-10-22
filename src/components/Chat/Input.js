@@ -86,7 +86,7 @@ const Input = () => {
         <div className={classes.input}>
             <input type="text"  placeholder="Type Here ..." onChange={e => setText(e.target.value)} value={text} />
             <div className={classes.send}>
-                <img src={Attach} alt="" />
+                {/* <img src={Attach} alt="" /> */}
                 <input type="file" className={classes.hidden} id="file" onChange={(e) => setImg(e.target.files[0])} />
                 <label htmlFor="file">
                     <img src={Img} alt="" />
